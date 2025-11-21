@@ -18,8 +18,8 @@ public class Rectangle {
     }
 // 3 Создает Rectangle, левый нижний угол которого находится в начале координат, а  длина (по оси X) и ширина (по оси Y) задаются.
     public Rectangle(int length, int width) {
-        this.topLeft = new Point(0, 0);
-        this.bottomRight = new Point(length, width);
+        this.topLeft = new Point(0, -width);     // верхняя точка выше нуля
+        this.bottomRight = new Point(length, 0); // нижняя точка на нуле
     }
 // 4 Создает Rectangle с размерами (1,1), левый нижний угол которого находится в начале координат.
     public Rectangle() {

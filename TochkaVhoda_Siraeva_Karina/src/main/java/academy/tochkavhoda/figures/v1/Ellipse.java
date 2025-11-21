@@ -73,18 +73,24 @@ public class Ellipse {
         yAxis = (int) (yAxis * yRatio);
     }
 // 16 Возвращает площадь Ellipse.
-    public double getArea() {
-        return Math.PI * xAxis * yAxis;
-    }
+public double getArea() {
+    return Math.PI * (xAxis / 2.0) * (yAxis / 2.0);}
 // 17 Возвращает периметр Ellipse. Для вычисления используйте формулу P= 2π * sqrt((XAxis2+YAxis2)/8)
-    public double getPerimeter() {
-        return 2 * Math.PI * Math.sqrt((xAxis * xAxis + yAxis * yAxis) / 8.0);
-    }
+public double getPerimeter() {
+    double a = xAxis / 2.0;
+    double b = yAxis / 2.0;
+    return 2 * Math.PI * Math.sqrt((a * a + b * b) / 2.0);
+}
 // 18 Определяет, лежит ли точка (x, y) внутри Ellipse. Если точка лежит на линии эллипса, считается, что она лежит внутри.
     public boolean isInside(int x, int y) {
-        int dx = x - center.getX();
-        int dy = y - center.getY();
-        return (dx * dx / (double)(xAxis * xAxis) + dy * dy / (double)(yAxis * yAxis)) <= 1.0;
+        double dx = x - center.getX();
+        double dy = y - center.getY();
+
+        // Делим на (полуось)^2 = (полная_ось / 2)^2
+        double halfX = xAxis / 2.0;
+        double halfY = yAxis / 2.0;
+
+        return (dx * dx) / (halfX * halfX) + (dy * dy) / (halfY * halfY) <= 1.0;
     }
 // 19 Определяет, лежит ли точка point внутри Ellipse. Если точка лежит на линии эллипса, считается, что она лежит внутри.
     public boolean isInside(Point point) {
