@@ -59,7 +59,11 @@ public class ZeroSteps3 {
     }
     //7 Возводит все элементы одномерного массива array в куб.
     public void cube(int[]array){
-
+        if (array == null) return;
+        for (int i = 0; i < array.length; i++) {
+            int value = array[i];
+            array[i] = value * value * value;
+        }
     }
     //8 Возвращает true, если в одномерном массиве array имеется элемент, равный value, иначе false
     public boolean find(int[]array, int value){
